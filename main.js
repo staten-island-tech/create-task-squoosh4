@@ -1,5 +1,5 @@
-import { validWords } from "./validWords";
-import { DOMSelectors } from "./domselectors";
+import { validWords } from "./modules/validWords";
+import { DOMSelectors } from "./modules/domselectors";
 
 const targetRow = 1
 const maxDex = validWords.length;
@@ -24,6 +24,7 @@ function wordGuessCheckerAlg(targetRow) {
             DOMSelectors.target.innerHTML = `
                 <span style="background-color: green;">${guessedLetters[letterNum]}</span>
             `
+            DOMSelectors.target.style.backgroundColor = "green";
 
         } else if (correctLetters.contains(guessedLetters[letterNum]) === true) {
 
