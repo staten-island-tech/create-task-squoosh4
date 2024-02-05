@@ -1,40 +1,41 @@
 import { validWords } from "./modules/validWords";
 import { DOMSelectors } from "./modules/domselectors";
 
+const target = `DOMSelectors.r${targetRow}l${letterNum + 1}`
 const targetRow = 1
+const chances = 6
 const maxDex = validWords.length;
 const wordToGuess = validWords[Math.floor(Math.random() * maxDex)];
 
 console.log(wordToGuess);
 
-function wordGuessCheckerAlg(targetRow) {
+function wordGuessCheckerAlg(rowToTarget) {
 
     const correctLetters = Array.from(wordToGuess);
     const guessedLetters = Array.from(DOMSelectors.input.value);
+    const target = `DOMSelectors.r${targetRow}l${letterNum + 1}`
 
     console.log(correctLetters);
     console.log(guessedLetters);
 
     for (let letterNum = 0; letterNum < 5; letterNum++) {
-        
-        const target = `r${targetRow}l${letterNum}`
 
         if (guessedLetters[letterNum].lower === correctLetters[letterNum].lower) {
 
-            DOMSelectors.target.innerHTML = `
+            target.innerHTML = `
                 <span style="background-color: green;">${guessedLetters[letterNum]}</span>
             `
-            DOMSelectors.target.style.backgroundColor = "green";
+            target.style.backgroundColor = "green";
 
         } else if (correctLetters.contains(guessedLetters[letterNum]) === true) {
 
-            DOMSelectors.target.innerHTML = `
+            target.innerHTML = `
                 <span style="background-color: yellow;">${guessedLetters[letterNum]}</span>
             `
 
         } else {
 
-            DOMSelectors.target.innerHTML = `
+            target.innerHTML = `
                 <span>${guessedLetters[letterNum]}</span>
             `
 
@@ -49,6 +50,8 @@ function wordGuessCheckerAlg(targetRow) {
 DOMSelectors.submitButton.addEventListener("click", function(event){
 
     event.preventDefault();
-    wordGuessCheckerAlg();
+    wordGuessCheckerAlg(targetRow);
+    chances--;
+    targetRow++;
 
 })

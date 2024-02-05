@@ -2,6 +2,7 @@ export const DOMSelectors = {
 
     input: document.querySelector("#input-field"),
     submitButton: document.querySelector("#submit-button"),
+    
     r1: document.querySelector("#row-1"),
     r2: document.querySelector("#row-2"),
     r3: document.querySelector("#row-3"),
