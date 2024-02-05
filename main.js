@@ -1,9 +1,9 @@
-import { validWords } from "./modules/validWords";
-import { DOMSelectors } from "./modules/domselectors";
+import { validWords } from "./modules/validWords.js";
+import { DOMSelectors } from "./modules/domselectors.js";
 
-const target = `DOMSelectors.r${targetRow}l${letterNum + 1}`
-const targetRow = 1
-const chances = 6
+
+const targetRow = 1;
+const chances = 6;
 const maxDex = validWords.length;
 const wordToGuess = validWords[Math.floor(Math.random() * maxDex)];
 
@@ -11,9 +11,12 @@ console.log(wordToGuess);
 
 function wordGuessCheckerAlg(rowToTarget) {
 
+    let letterNum = 0;
     const correctLetters = Array.from(wordToGuess);
     const guessedLetters = Array.from(DOMSelectors.input.value);
     const target = `DOMSelectors.r${targetRow}l${letterNum + 1}`
+
+    DOMSelectors.r1l1.innerHTML = `<p>stupid</p>`
 
     console.log(correctLetters);
     console.log(guessedLetters);
@@ -42,8 +45,6 @@ function wordGuessCheckerAlg(rowToTarget) {
         }
 
     }
-
-
 
 };
 
