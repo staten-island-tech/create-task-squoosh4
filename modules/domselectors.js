@@ -1,6 +1,5 @@
 export const DOMSelectors = {
 
-    body: document.querySelector(body),
     input: document.querySelector("#input-field"),
     submitButton: document.querySelector("#submit-button"),
     
@@ -45,6 +44,6 @@ export const DOMSelectors = {
     r6l2: document.querySelector("#row-6-letter-2"),
     r6l3: document.querySelector("#row-6-letter-3"),
     r6l4: document.querySelector("#row-6-letter-4"),
-    r62l5: document.querySelector("#row-6-letter-5"),
+    r6l5: document.querySelector("#row-6-letter-5"),
 
 }
