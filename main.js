@@ -73,4 +73,11 @@ DOMSelectors.submitButton.addEventListener("click", function(event){
     chances--;
     targetRow++;
 
+    if (chances === 0) {
+
+        console.log("you lose");
+        DOMSelectors.body.innerHTML = `<p> the word was ${wordToGuess} you lose (refresh the page to play again)</p>`;
+
+    }
+
 })
