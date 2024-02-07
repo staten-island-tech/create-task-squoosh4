@@ -2,39 +2,50 @@ import { validWords } from "./modules/validWords.js";
 import { DOMSelectors } from "./modules/domselectors.js";
 
 
-const targetRow = 1;
-const chances = 6;
+let targetRow = 1;
+let chances = 6;
 const maxDex = validWords.length;
 const wordToGuess = validWords[Math.floor(Math.random() * maxDex)];
 
 console.log(wordToGuess);
 
-function wordGuessCheckerAlg(rowToTarget) {
+function wordGuessCheckerAlg() {
 
     let letterNum = 0;
+
+    const correctWord = wordToGuess;
+    const guessedWord = DOMSelectors.input.value;
     const correctLetters = Array.from(wordToGuess);
     const guessedLetters = Array.from(DOMSelectors.input.value);
-    const target = `DOMSelectors.r${targetRow}l${letterNum + 1}`
+    const target = document.querySelector(`#row-${targetRow}-letter-${letterNum + 1}`);
 
-    DOMSelectors.r1l1.innerHTML = `<p>stupid</p>`
-
+    console.log(correctWord);
+    console.log(guessedWord);
     console.log(correctLetters);
     console.log(guessedLetters);
+    console.log(target);
 
-    for (let letterNum = 0; letterNum < 5; letterNum++) {
+    //DOMSelectors.r1l1.innerHTML = `<p>test</p>`
 
-        if (guessedLetters[letterNum].lower === correctLetters[letterNum].lower) {
+    for ( let letterNum = 0; letterNum < 5; letterNum++ ) {
+
+        const target = document.querySelector(`#row-${targetRow}-letter-${letterNum + 1}`);
+        
+        if (guessedLetters[letterNum] === correctLetters[letterNum]) {
 
             target.innerHTML = `
-                <span style="background-color: green;">${guessedLetters[letterNum]}</span>
+                <span>${guessedLetters[letterNum]}</span>
             `
+
             target.style.backgroundColor = "green";
 
-        } else if (correctLetters.contains(guessedLetters[letterNum]) === true) {
+        } else if (correctWord.includes(guessedLetters[letterNum]) === true) {
 
             target.innerHTML = `
-                <span style="background-color: yellow;">${guessedLetters[letterNum]}</span>
+                <span>${guessedLetters[letterNum]}</span>
             `
+
+            target.style.backgroundColor = "yellow";
 
         } else {
 
@@ -46,12 +57,19 @@ function wordGuessCheckerAlg(rowToTarget) {
 
     }
 
+    if (guessedWord === correctWord) {
+        
+        console.log("you win")
+        DOMSelectors.body.innerHTML = `<p>you win (refresh the page to play again)</p>`
+
+    }
+
 };
 
 DOMSelectors.submitButton.addEventListener("click", function(event){
 
     event.preventDefault();
-    wordGuessCheckerAlg(targetRow);
+    wordGuessCheckerAlg();
     chances--;
     targetRow++;
 
