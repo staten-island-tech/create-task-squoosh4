@@ -53,16 +53,16 @@ function wordGuessCheckerAlg(rowToTarget) {
                 <span>${guessedLetters[letterNum]}</span>
             `
 
-        }
+        };
 
-    }
+    };
 
     if (guessedWord === correctWord) {
         
         console.log("you win")
         DOMSelectors.body.innerHTML = `<p>you win (refresh the page to play again)</p>`
 
-    }
+    };
 
 };
 
@@ -78,6 +78,6 @@ DOMSelectors.submitButton.addEventListener("click", function(event){
         console.log("you lose");
         DOMSelectors.body.innerHTML = `<p> the word was ${wordToGuess} you lose (refresh the page to play again)</p>`;
 
-    }
+    };
 
-})
+});
