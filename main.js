@@ -9,7 +9,7 @@ const wordToGuess = validWords[Math.floor(Math.random() * maxDex)];
 
 console.log(wordToGuess);
 
-function wordGuessCheckerAlg() {
+function wordGuessCheckerAlg(rowToTarget) {
 
     let letterNum = 0;
 
@@ -17,7 +17,7 @@ function wordGuessCheckerAlg() {
     const guessedWord = DOMSelectors.input.value;
     const correctLetters = Array.from(wordToGuess);
     const guessedLetters = Array.from(DOMSelectors.input.value);
-    const target = document.querySelector(`#row-${targetRow}-letter-${letterNum + 1}`);
+    const target = document.querySelector(`#row-${rowToTarget}-letter-${letterNum + 1}`);
 
     console.log(correctWord);
     console.log(guessedWord);
@@ -29,7 +29,7 @@ function wordGuessCheckerAlg() {
 
     for ( let letterNum = 0; letterNum < 5; letterNum++ ) {
 
-        const target = document.querySelector(`#row-${targetRow}-letter-${letterNum + 1}`);
+        const target = document.querySelector(`#row-${rowToTarget}-letter-${letterNum + 1}`);
         
         if (guessedLetters[letterNum] === correctLetters[letterNum]) {
 
@@ -69,7 +69,7 @@ function wordGuessCheckerAlg() {
 DOMSelectors.submitButton.addEventListener("click", function(event){
 
     event.preventDefault();
-    wordGuessCheckerAlg();
+    wordGuessCheckerAlg(targetRow);
     chances--;
     targetRow++;
 
